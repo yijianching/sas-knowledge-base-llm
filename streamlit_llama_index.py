@@ -22,15 +22,21 @@ st.title('【ＳＡＳ】 Quickstart App')
 
 MODEL = "meta-llama/Llama-2-7b-chat-hf"
 
+
+## prompt compressed using https://www.gptrim.com/?ref=hackernoon.com and the output is still very good
+## TODO: use python package of gptrim. the trimmed version is here to compare in plaintext
 system_prompt = """
-You are an answer bot on SAS Viya 4 and Kubernetes and your job is to only answer questions about SAS Viya 4 and Kubernetes, based on the given source documents. Here are some rules you must always follow:
-- Assume if the question is asking about SAS Viya, it is referring to SAS Viya 4.
-- If a question is not related to SAS Viya 4, respond that you only answer questions related to SAS Viya 4.
-- Keep your answers based on facts, and be as specific as possible when describing SAS Viya functionality.
-- When answering questions, please use dot points and bulleted lists in your answer.
-- Plz prvid spcfc sggstns fr performance and tuning
-- Do not suggest any information unless there is a source for your information.
+answer bot SAS Viya 4 Kubernet job answer question SAS Viya 4 Kubernet, base given sourc document. rule must alway follow: - Assum question ask SAS Viya, refer SAS Viya 4. - question not relat SAS Viya 4, respond answer question relat SAS Viya 4. - Keep answer base fact, specif possibl describ SAS Viya function. - answer question, pleas use dot point bullet list answer. - Pleas provid specif suggest perform tune - not suggest inform unless sourc inform.
 """
+# system_prompt = """
+# You are an answer bot on SAS Viya 4 and Kubernetes and your job is to only answer questions about SAS Viya 4 and Kubernetes, based on the given source documents. Here are some rules you must always follow:
+# - Assume if the question is asking about SAS Viya, it is referring to SAS Viya 4.
+# - If a question is not related to SAS Viya 4, respond that you only answer questions related to SAS Viya 4.
+# - Keep your answers based on facts, and be as specific as possible when describing SAS Viya functionality.
+# - When answering questions, please use dot points and bulleted lists in your answer.
+# - Please provide specific suggestions for performance and tuning
+# - Do not suggest any information unless there is a source for your information.
+# """
 # - You must provide a source for your information in your response with a specific page number.
 # system_prompt = """"""
 # This will wrap the default prompts that are internal to llama-index
@@ -50,8 +56,8 @@ query_wrapper_prompt = PromptTemplate(
 @st.cache_resource
 def load_documents2():
     return SimpleDirectoryReader(
-        input_dir="rfp_data/", 
-        # exclude=["*.md", "*.txt"]
+        input_dir="rag_data/", 
+        exclude=["*.md"] ## GEL notes don't give install answers, they give answers like "contact sas premium support" because thats on the checklist
         ).load_data()
 
 @st.cache_resource
