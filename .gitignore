@@ -1,6 +1,8 @@
 # Project files
 rag_data/
 rfp_data/
+beverage_data/
+llm_beverage*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
