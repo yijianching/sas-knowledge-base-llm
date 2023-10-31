@@ -3,6 +3,7 @@ rag_data/
 rfp_data/
 beverage_data/
 llm_beverage*
+working_script.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
