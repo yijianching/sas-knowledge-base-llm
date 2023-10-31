@@ -20,7 +20,8 @@ from llmlingua import PromptCompressor
 
 st.title('【ＳＡＳ】 Quickstart App')
 
-MODEL = "meta-llama/Llama-2-7b-chat-hf"
+## TODO: trying 13b, also try out models like mistral
+MODEL = "meta-llama/Llama-2-13b-chat-hf"
 
 
 ## prompt compressed using https://www.gptrim.com/?ref=hackernoon.com and the output is still very good
